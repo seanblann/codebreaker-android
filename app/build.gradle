@@ -15,6 +15,10 @@ android {
         versionName '1.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        String propertyFile = "$projectDir/../../../services/codebreaker.properties"
+
+        buildConfigField 'String', 'BASE_URL', quoted(getProperty(propertyFile, 'base_url'))
     }
 
     //noinspection GroovyAssignabilityCheck
@@ -43,7 +47,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
 
     //Preferences/settings library.
-    implementation 'androidx.preference.preference:1.4.0'
+    implementation 'androidx.preference:preference:1.2.0'
 
     //Fragment navigation libraries
     implementation 'androidx.fragment:fragment:1.4.1'
@@ -52,10 +56,10 @@ dependencies {
 
     //Lifecycle (LiveData and ViewModel)
     def lifecycleVersion  = '2.4.0'
-    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    //implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+//    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
 
     //Gson library.
     implementation 'com.google.code.gson:gson:2.8.9'
