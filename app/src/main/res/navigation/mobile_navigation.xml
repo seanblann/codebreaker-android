@@ -8,18 +8,18 @@
   <fragment
     android:id="@+id/navigation_home"
     android:label="@string/title_home"
-    android:name="edu.cnm.deepdive.codebreaker.ui.home.HomeFragment"
+    android:name="edu.cnm.deepdive.codebreaker.controller.ui.home.HomeFragment"
     tools:layout="@layout/fragment_home"/>
 
   <fragment
     android:id="@+id/navigation_dashboard"
     android:label="@string/title_dashboard"
-    android:name="edu.cnm.deepdive.codebreaker.ui.dashboard.DashboardFragment"
+    android:name="edu.cnm.deepdive.codebreaker.controller.ui.dashboard.DashboardFragment"
     tools:layout="@layout/fragment_dashboard"/>
 
   <fragment
     android:id="@+id/navigation_notifications"
     android:label="@string/title_notifications"
-    android:name="edu.cnm.deepdive.codebreaker.ui.notifications.NotificationsFragment"
+    android:name="edu.cnm.deepdive.codebreaker.controller.ui.notifications.NotificationsFragment"
     tools:layout="@layout/fragment_notifications"/>
 </navigation>

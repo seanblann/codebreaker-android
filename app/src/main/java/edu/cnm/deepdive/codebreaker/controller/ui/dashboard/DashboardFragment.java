@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.codebreaker.ui.home;
+package edu.cnm.deepdive.codebreaker.controller.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,24 +10,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import edu.cnm.deepdive.codebreaker.R;
-import edu.cnm.deepdive.codebreaker.databinding.FragmentHomeBinding;
+import edu.cnm.deepdive.codebreaker.databinding.FragmentDashboardBinding;
 
-public class HomeFragment extends Fragment {
+public class DashboardFragment extends Fragment {
 
-  private HomeViewModel homeViewModel;
-  private FragmentHomeBinding binding;
+  private DashboardViewModel dashboardViewModel;
+  private FragmentDashboardBinding binding;
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    homeViewModel =
-        new ViewModelProvider(this).get(HomeViewModel.class);
+    dashboardViewModel =
+        new ViewModelProvider(this).get(DashboardViewModel.class);
 
-    binding = FragmentHomeBinding.inflate(inflater, container, false);
+    binding = FragmentDashboardBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-    final TextView textView = binding.textHome;
-    homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+    final TextView textView = binding.textDashboard;
+    dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
       @Override
       public void onChanged(@Nullable String s) {
         textView.setText(s);

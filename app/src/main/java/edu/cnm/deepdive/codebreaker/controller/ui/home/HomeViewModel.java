@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.codebreaker.ui.home;
+package edu.cnm.deepdive.codebreaker.controller.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
