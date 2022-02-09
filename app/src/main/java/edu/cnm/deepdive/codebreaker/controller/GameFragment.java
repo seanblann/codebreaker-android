@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -73,6 +75,12 @@ public class GameFragment extends Fragment {
   public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
     inflater.inflate(R.menu.game_options, menu);
+    menu
+        .findItem(R.id.new_game)
+        .setOnMenuItemClickListener((menuItem) -> {
+          gameViewModel.startGame("ABCDEF", 3); // Fix Me! don't hardcode this!
+          return true;
+        });
   }
 
   @Override
