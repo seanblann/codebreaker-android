@@ -5,7 +5,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".controller.HomeFragment">
+  tools:context=".controller.GameFragment">
 
   <ListView
     android:id="@+id/guesses"
@@ -21,7 +21,8 @@
     android:id="@+id/guess_layout"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
     app:hintEnabled="true"
     app:hintAnimationEnabled="true"
     app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +43,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/submit_text"
-    android:layout_marginVertical="16dp"
     android:layout_marginEnd="16dp"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+    app:layout_constraintTop_toTopOf="@id/guess_layout"
+    app:layout_constraintBottom_toBottomOf="@id/guess_layout"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

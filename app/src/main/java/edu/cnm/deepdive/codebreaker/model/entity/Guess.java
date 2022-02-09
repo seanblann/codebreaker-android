@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.codebreaker.model.entity;
 
+import android.annotation.SuppressLint;
+import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 import java.util.Date;
 
@@ -69,6 +71,13 @@ public class Guess {
 
   public void setSolution(boolean solution) {
     this.solution = solution;
+  }
+
+  @SuppressLint("DefaultLocale")
+  @NonNull
+  @Override
+  public String toString() {
+    return String.format("%1$s (%2$d / %3$d)", text, exactMatches, nearMatches);
   }
 
 }
