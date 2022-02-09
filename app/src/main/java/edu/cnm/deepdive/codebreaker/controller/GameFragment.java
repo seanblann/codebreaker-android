@@ -67,7 +67,7 @@ public class GameFragment extends Fragment {
           ArrayAdapter<Guess> adapter = new ArrayAdapter<>(getContext(),
               android.R.layout.simple_list_item_1, game.getGuesses());
           binding.guesses.setAdapter(adapter);
-          //TODO: Enable/disable controls.
+          binding.submit.setEnabled(!game.isSolved());
         });
   }
 
@@ -75,12 +75,18 @@ public class GameFragment extends Fragment {
   public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
     inflater.inflate(R.menu.game_options, menu);
-    menu
-        .findItem(R.id.new_game)
-        .setOnMenuItemClickListener((menuItem) -> {
-          gameViewModel.startGame("ABCDEF", 3); // Fix Me! don't hardcode this!
-          return true;
-        });
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    boolean handled;
+    if (item.getItemId() == R.id.new_game) {
+      gameViewModel.startGame("ABCDEF", 3);
+      handled = true;
+    } else {
+      handled = super.onOptionsItemSelected(item);
+    }
+    return handled;
   }
 
   @Override
@@ -89,3 +95,15 @@ public class GameFragment extends Fragment {
     binding = null;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
