@@ -56,10 +56,9 @@ dependencies {
 
     //Lifecycle (LiveData and ViewModel)
     def lifecycleVersion  = '2.4.0'
-    //implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-//    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
 
     //Gson library.
     implementation 'com.google.code.gson:gson:2.8.9'
