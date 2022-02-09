@@ -8,7 +8,7 @@
   <fragment
     android:id="@+id/navigation_home"
     android:label="@string/title_home"
-    android:name="edu.cnm.deepdive.codebreaker.controller.ui.home.HomeFragment"
+    android:name="edu.cnm.deepdive.codebreaker.controller.HomeFragment"
     tools:layout="@layout/fragment_home"/>
 
   <fragment

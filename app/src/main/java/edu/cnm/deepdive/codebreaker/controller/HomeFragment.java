@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.codebreaker.controller.ui.home;
+package edu.cnm.deepdive.codebreaker.controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,23 +10,24 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import edu.cnm.deepdive.codebreaker.viewmodel.GameViewModel;
 import edu.cnm.deepdive.codebreaker.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
-  private HomeViewModel homeViewModel;
+  private GameViewModel gameViewModel;
   private FragmentHomeBinding binding;
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    homeViewModel =
-        new ViewModelProvider(this).get(HomeViewModel.class);
+    gameViewModel =
+        new ViewModelProvider(this).get(GameViewModel.class);
 
     binding = FragmentHomeBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
     final TextView textView = binding.textHome;
-    homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+    gameViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
       @Override
       public void onChanged(@Nullable String s) {
         textView.setText(s);
