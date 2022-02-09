@@ -9,7 +9,7 @@
     android:id="@+id/navigation_home"
     android:label="@string/title_home"
     android:name="edu.cnm.deepdive.codebreaker.controller.HomeFragment"
-    tools:layout="@layout/fragment_home"/>
+    tools:layout="@layout/fragment_game"/>
 
   <fragment
     android:id="@+id/navigation_dashboard"
