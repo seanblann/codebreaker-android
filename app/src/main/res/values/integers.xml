@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <integer name="code_length_pref_min">3</integer>
+  <integer name="code_length_pref_max">6</integer>
+  <integer name="code_length_pref_default">4</integer>
+  <integer name="code_length_pref_increment">1</integer>
+
+  <integer-array name="color_values">
+    <item>@color/red_swatch</item>
+    <item>@color/yellow_swatch</item>
+    <item>@color/orange_swatch</item>
+    <item>@color/green_swatch</item>
+    <item>@color/blue_swatch</item>
+    <item>@color/indigo_swatch</item>
+    <item>@color/violet_swatch</item>
+  </integer-array>
+</resources>

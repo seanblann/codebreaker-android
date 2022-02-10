@@ -6,4 +6,16 @@
   <string name="submit_text">Submit</string>
   <string name="guess_hint">Text of guess</string>
   <string name="new_game_title">New game</string>
+
+  <string name="color_chars">ROYGBIV</string>
+
+  <string-array name="color_labels">
+    <item>Red</item>
+    <item>Orange</item>
+    <item>Yellow</item>
+    <item>Green</item>
+    <item>Blue</item>
+    <item>Indigo</item>
+    <item>Violet</item>
+  </string-array>
 </resources>
