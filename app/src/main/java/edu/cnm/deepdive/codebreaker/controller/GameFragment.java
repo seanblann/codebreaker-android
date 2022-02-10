@@ -6,21 +6,19 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.adapter.CodeCharacterAdapter;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.databinding.FragmentGameBinding;
+import edu.cnm.deepdive.codebreaker.model.entity.Game;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
 import edu.cnm.deepdive.codebreaker.viewmodel.GameViewModel;
 import java.util.HashMap;
@@ -46,6 +44,7 @@ public class GameFragment extends Fragment {
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentGameBinding.inflate(inflater, container, false);
     setupMaps();
+    setupViews();
     return binding.getRoot();
   }
 
@@ -55,23 +54,33 @@ public class GameFragment extends Fragment {
     gameViewModel = new ViewModelProvider(this).get(GameViewModel.class);
     gameViewModel
         .getThrowable()
-        .observe(getViewLifecycleOwner(), (throwable) -> {
-          if (throwable != null) {
-            //noinspection ConstantConditions
-            Snackbar
-                .make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_LONG)
-                .show();
-          }
-        });
+        .observe(getViewLifecycleOwner(), this::handleThrowable);
     gameViewModel
         .getGame()
-        .observe(getViewLifecycleOwner(), (game) -> {
-          codeLength = game.getLength();
-          ArrayAdapter<Guess> adapter = new ArrayAdapter<>(getContext(),
-              android.R.layout.simple_list_item_1, game.getGuesses());
-          binding.guesses.setAdapter(adapter);
-          binding.submit.setEnabled(!game.isSolved());
-        });
+        .observe(getViewLifecycleOwner(), this::updateGameDisplay);
+  }
+
+  private void updateGameDisplay(Game game) {
+    codeLength = game.getLength();
+    for (int i = 0; i < codeLength; i++) {
+      spinners[i].setVisibility(View.VISIBLE);
+    }
+    for (int i = codeLength; i < spinners.length; i++) {
+      spinners[i].setVisibility(View.GONE);
+    }
+    ArrayAdapter<Guess> adapter = new ArrayAdapter<>(getContext(),
+        android.R.layout.simple_list_item_1, game.getGuesses());
+    binding.guesses.setAdapter(adapter);
+    binding.guessControls.setVisibility(game.isSolved() ? View.GONE : View.VISIBLE);
+  }
+
+  private void handleThrowable(Throwable throwable) {
+    if (throwable != null) {
+      //noinspection ConstantConditions
+      Snackbar
+          .make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_LONG)
+          .show();
+    }
   }
 
   @Override
@@ -84,7 +93,7 @@ public class GameFragment extends Fragment {
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     boolean handled;
     if (item.getItemId() == R.id.new_game) {
-      gameViewModel.startGame("ABCDEF", 3);
+      gameViewModel.startGame();
       handled = true;
     } else {
       handled = super.onOptionsItemSelected(item);
@@ -98,7 +107,7 @@ public class GameFragment extends Fragment {
     binding = null;
   }
 
-  private void setupMaps(){
+  private void setupMaps() {
     String colors = getString(R.string.color_chars);
     char[] colorChars = colors.toCharArray();
     poolCharacters = colors
@@ -128,6 +137,11 @@ public class GameFragment extends Fragment {
     return labelMap;
   }
 
+  private void setupViews() {
+    setupSpinners();
+    setupListeners();
+  }
+
   private void setupSpinners() {
     int maxCodeLength = getResources().getInteger(R.integer.code_length_pref_max);
     LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -142,6 +156,7 @@ public class GameFragment extends Fragment {
       binding.spinners.addView(spinner);
     }
   }
+
   private void setupListeners() {
     binding.submit.setOnClickListener((view) -> submitGuess());
 
