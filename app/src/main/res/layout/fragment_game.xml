@@ -15,38 +15,34 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/guess_layout"/>
+    app:layout_constraintBottom_toTopOf="@id/guess_controls"/>
 
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/guess_layout"
+  <LinearLayout
+    android:id="@+id/guess_controls"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginTop="16dp"
-    app:hintEnabled="true"
-    app:hintAnimationEnabled="true"
-    app:layout_constraintStart_toStartOf="parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/half_dynamic_spacing"
+    android:gravity="end|center_vertical"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@id/submit">
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/guess"
-      android:layout_width="match_parent"
+    <LinearLayout
+      android:id="@+id/spinners"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:inputType="text"
-      android:hint="@string/guess_hint"/>
+      android:orientation="horizontal"
+      android:layout_weight="1"/>
 
-  </com.google.android.material.textfield.TextInputLayout>
+    <Button
+      android:id="@+id/submit"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/submit_text"
+      android:layout_margin="@dimen/half_dynamic_spacing"/>
 
-  <Button
-    android:id="@+id/submit"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/submit_text"
-    android:layout_marginEnd="16dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="@id/guess_layout"
-    app:layout_constraintBottom_toBottomOf="@id/guess_layout"/>
+  </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

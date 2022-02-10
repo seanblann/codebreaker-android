@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
+import edu.cnm.deepdive.adapter.CodeCharacterAdapter;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.databinding.FragmentGameBinding;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
@@ -44,14 +45,6 @@ public class GameFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentGameBinding.inflate(inflater, container, false);
-    binding.submit.setOnClickListener((view) -> {
-      //noinspection ConstantConditions
-      String text = binding.guess
-          .getText()
-          .toString()
-          .trim();
-      gameViewModel.submitGuess(text);
-    });
     setupMaps();
     return binding.getRoot();
   }
@@ -73,7 +66,7 @@ public class GameFragment extends Fragment {
     gameViewModel
         .getGame()
         .observe(getViewLifecycleOwner(), (game) -> {
-          binding.guess.setText("");
+          codeLength = game.getLength();
           ArrayAdapter<Guess> adapter = new ArrayAdapter<>(getContext(),
               android.R.layout.simple_list_item_1, game.getGuesses());
           binding.guesses.setAdapter(adapter);
@@ -133,6 +126,33 @@ public class GameFragment extends Fragment {
       labelMap.put(chars[i], labels[i]);
     }
     return labelMap;
+  }
+
+  private void setupSpinners() {
+    int maxCodeLength = getResources().getInteger(R.integer.code_length_pref_max);
+    LayoutInflater inflater = LayoutInflater.from(getContext());
+    spinners = new Spinner[maxCodeLength];
+    for (int i = 0; i < spinners.length; i++) {
+      Spinner spinner =
+          (Spinner) inflater.inflate(R.layout.swatch_spinner, binding.spinners, false);
+      CodeCharacterAdapter adapter =
+          new CodeCharacterAdapter(getContext(), colorValueMap, colorLabelMap, poolCharacters);
+      spinner.setAdapter(adapter);
+      spinners[i] = spinner;
+      binding.spinners.addView(spinner);
+    }
+  }
+  private void setupListeners() {
+    binding.submit.setOnClickListener((view) -> submitGuess());
+
+  }
+
+  private void submitGuess() {
+    StringBuilder builder = new StringBuilder(codeLength);
+    for (int i = 0; i < codeLength; i++) {
+      builder.append(spinners[i].getSelectedItem());
+    }
+    gameViewModel.submitGuess(builder.toString());
   }
 }
 
