@@ -63,6 +63,9 @@ public class GameFragment extends Fragment {
   private void updateGameDisplay(Game game) {
     codeLength = game.getLength();
     for (int i = 0; i < codeLength; i++) {
+      if (game.getGuesses().isEmpty()) {
+        spinners[i].setSelection(0);
+      }
       spinners[i].setVisibility(View.VISIBLE);
     }
     for (int i = codeLength; i < spinners.length; i++) {

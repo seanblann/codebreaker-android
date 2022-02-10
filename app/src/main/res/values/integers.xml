@@ -8,8 +8,8 @@
 
   <integer-array name="color_values">
     <item>@color/red_swatch</item>
-    <item>@color/yellow_swatch</item>
     <item>@color/orange_swatch</item>
+    <item>@color/yellow_swatch</item>
     <item>@color/green_swatch</item>
     <item>@color/blue_swatch</item>
     <item>@color/indigo_swatch</item>
