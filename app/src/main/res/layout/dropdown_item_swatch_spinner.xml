@@ -7,7 +7,7 @@
   android:layout_height="wrap_content"
   android:padding="@dimen/half_static_spacing"
   android:gravity="start|center_vertical"
-  tools:ignore="UseCompoundDrawables">
+  tools:viewBindingIgnore="true">
 
   <ImageView
     android:id="@+id/swatch"
