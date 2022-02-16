@@ -5,7 +5,6 @@ import edu.cnm.deepdive.codebreaker.model.entity.Game;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import java.util.function.Function;
 
 public class GameRepository {
 
@@ -30,7 +29,7 @@ public class GameRepository {
     Guess guess = new Guess();
     guess.setText(text);
     return proxy
-        .submitGuess(game.getId(), guess)
+        .submitGuess(game.getServiceKey(), guess)
         .map((g) -> {
           game.getGuesses() .add(g);
           if (g.isSolution()) {

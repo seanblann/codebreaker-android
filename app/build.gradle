@@ -19,6 +19,14 @@ android {
         String propertyFile = "$projectDir/../../../services/codebreaker.properties"
 
         buildConfigField 'String', 'BASE_URL', quoted(getProperty(propertyFile, 'base_url'))
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        'room.schemaLocation': "$projectDir/schemas".toString()
+                ]
+            }
+        }
     }
 
     //noinspection GroovyAssignabilityCheck
