@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.codebreaker.BuildConfig;
 import edu.cnm.deepdive.codebreaker.model.entity.Game;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
+import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
 import io.reactivex.rxjava3.core.Single;
 import java.io.IOException;
 import java.util.Properties;
@@ -25,7 +26,7 @@ public interface CodebreakerServiceProxy {
   String ISO_8601_DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
   @POST("games/")
-  Single<Game> startGame(@Body Game game);
+  Single<GameWithGuesses> startGame(@Body Game game);
 
   @POST("games/{gameId}/guesses")
   Single<Guess> submitGuess(@Path("gameId") String gameID, @Body Guess guess);

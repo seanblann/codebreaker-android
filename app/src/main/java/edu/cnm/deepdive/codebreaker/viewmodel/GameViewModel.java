@@ -9,14 +9,14 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import edu.cnm.deepdive.codebreaker.R;
-import edu.cnm.deepdive.codebreaker.model.entity.Game;
+import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
 import edu.cnm.deepdive.codebreaker.service.GameRepository;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 
 public class GameViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
 
-  private final MutableLiveData<Game> game;
+  private final MutableLiveData<GameWithGuesses> game;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
   private final GameRepository repository;
@@ -38,7 +38,7 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
     pending.clear();
   }
 
-  public LiveData<Game> getGame() {
+  public LiveData<GameWithGuesses> getGame() {
     return game;
   }
 
@@ -59,7 +59,7 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
 
   public void submitGuess(String text) {
     throwable.setValue(null);
-    Game game = this.game.getValue();
+    GameWithGuesses game = this.game.getValue();
     //noinspection ConstantConditions
     Disposable disposable = repository
         .submitGuess(game, text)
