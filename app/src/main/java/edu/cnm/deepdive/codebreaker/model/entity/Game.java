@@ -14,7 +14,6 @@ public class Game {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "game_id")
-  @Ignore
   private long id;
 
   @Expose
