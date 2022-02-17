@@ -15,13 +15,6 @@ public class CodebreakerApplication extends Application {
     super.onCreate();
     Stetho.initializeWithDefaults(this);
     CodebreakerDatabase.setContext(this);
-    CodebreakerDatabase
-        .getInstance()
-        .getGameDao()
-        .delete()
-        .subscribeOn(Schedulers.io())
-        .subscribe();
-
     //TODO Initialize repositories that need an app-level context.
     //etc.
   }

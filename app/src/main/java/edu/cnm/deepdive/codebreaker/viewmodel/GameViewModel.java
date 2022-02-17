@@ -64,7 +64,7 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
     Disposable disposable = repository
         .submitGuess(game, text)
         .subscribe(
-            (guess) -> this.game.postValue(game),
+            this.game::postValue,
             this::postThrowable
         );
     pending.add(disposable);
