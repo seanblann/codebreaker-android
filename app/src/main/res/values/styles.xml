@@ -5,4 +5,10 @@
     <item name="android:textSize">@dimen/match_count_size</item>
     <item name="android:includeFontPadding">false</item>
   </style>
+
+  <style name="GuessNumber">
+    <item name="android:autoSizeTextType">uniform</item>
+    <item name="android:includeFontPadding">false</item>
+    <item name="android:textAlignment">textEnd</item>
+  </style>
 </resources>

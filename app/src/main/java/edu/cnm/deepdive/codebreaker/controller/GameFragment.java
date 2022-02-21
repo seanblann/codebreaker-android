@@ -74,6 +74,7 @@ public class GameFragment extends Fragment {
     }
     GuessAdapter adapter = new GuessAdapter(getContext(), colorValueMap, colorLabelMap, game);
     binding.guesses.setAdapter(adapter);
+    binding.guesses.scrollToPosition(adapter.getItemCount() - 1);
     binding.guessControls.setVisibility(game.isSolved() ? View.GONE : View.VISIBLE);
   }
 

@@ -7,4 +7,5 @@
   <dimen name="half_dynamic_spacing">8dp</dimen>
   <dimen name="divider_width">2dp</dimen>
   <dimen name="match_count_size">20sp</dimen>
+  <dimen name="guess_number_width">32dp</dimen>
 </resources>

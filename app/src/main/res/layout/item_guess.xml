@@ -9,23 +9,22 @@
 
   <TextView
     android:id="@+id/guess_number"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/guess_number_width"
     android:layout_height="0dp"
-    android:layout_margin="@dimen/half_dynamic_spacing"
-    android:includeFontPadding="false"
-    android:autoSizeTextType="uniform"
+    android:layout_marginVertical="@dimen/half_static_spacing"
+    android:layout_marginHorizontal="@dimen/half_dynamic_spacing"
     android:contentDescription="@string/guess_number"
+    style="@style/GuessNumber"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    tools:text="10"/>
+    app:layout_constraintBottom_toBottomOf="parent"/>
 
   <LinearLayout
     android:id="@+id/swatch_container"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_margin="@dimen/half_static_spacing"
+    android:layout_margin="4dp"
     android:gravity="start|center_vertical"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toEndOf="@id/guess_number"
