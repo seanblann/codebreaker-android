@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/drawable/matches_divider.xml" value="0.3697916666666667" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/activity_settings.xml" value="0.1765625" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/character_swatch.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/dropdown_item_swatch_spinner.xml" value="0.32653985507246375" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/fragment_game.xml" value="0.33" />
@@ -14,6 +15,8 @@
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/swatch_spinner.xml" value="0.32653985507246375" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/menu/game_options.xml" value="0.3640625" />
+        <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/menu/main_options.xml" value="0.3640625" />
+        <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/xml/settings.xml" value="0.1796875" />
       </map>
     </option>
   </component>
