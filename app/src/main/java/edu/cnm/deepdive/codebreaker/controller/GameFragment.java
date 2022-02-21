@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.adapter.CodeCharacterAdapter;
+import edu.cnm.deepdive.adapter.GuessAdapter;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.databinding.FragmentGameBinding;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
@@ -71,8 +72,7 @@ public class GameFragment extends Fragment {
     for (int i = codeLength; i < spinners.length; i++) {
       spinners[i].setVisibility(View.GONE);
     }
-    ArrayAdapter<Guess> adapter = new ArrayAdapter<>(getContext(),
-        android.R.layout.simple_list_item_1, game.getGuesses());
+    GuessAdapter adapter = new GuessAdapter(getContext(), colorValueMap, colorLabelMap, game);
     binding.guesses.setAdapter(adapter);
     binding.guessControls.setVisibility(game.isSolved() ? View.GONE : View.VISIBLE);
   }
