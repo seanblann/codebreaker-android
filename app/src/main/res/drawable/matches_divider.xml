@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+  android:pivotX="50%"
+  android:pivotY="50%"
+  android:fromDegrees="135"
+  android:toDegrees="135">
+
+
+  <shape
+    android:shape="line">
+
+    <stroke
+      android:width="@dimen/divider_width"
+      android:color="?attr/colorPrimaryDark"/>
+
+  </shape>
+
+</rotate>

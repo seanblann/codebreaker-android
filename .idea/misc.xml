@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/drawable/matches_divider.xml" value="0.3697916666666667" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/character_swatch.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/dropdown_item_swatch_spinner.xml" value="0.32653985507246375" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/fragment_game.xml" value="0.33" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/fragment_home.xml" value="0.213768115942029" />
+        <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/item_guess.xml" value="0.3546875" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/item_swatch_spinner.xml" value="0.32653985507246375" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/layout/swatch_spinner.xml" value="0.32653985507246375" />
         <entry key="..\:/Users/seanb/bootcamp/projects/codebreaker-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3651041666666667" />

@@ -8,6 +8,9 @@
   <string name="new_game_title">New game</string>
 
   <string name="color_chars">ROYGBIV</string>
+  <string name="guess_number">Guess number</string>
+  <string name="exact_matches">Exact Matches</string>
+  <string name="near_matches">Near Matches</string>
 
   <string-array name="color_labels">
     <item>Red</item>
