@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     boolean handled;
     int itemId = item.getItemId();
     if (itemId == R.id.settings) {
-      Intent intent = new Intent();
+      Intent intent = new Intent(this, SettingsActivity.class);
       startActivity(intent);
       handled = true;
     } else {

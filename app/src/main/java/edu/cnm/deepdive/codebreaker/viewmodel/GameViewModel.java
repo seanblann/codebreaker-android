@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.codebreaker.viewmodel;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -8,6 +9,8 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
 import edu.cnm.deepdive.codebreaker.service.GameRepository;
@@ -21,6 +24,9 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
   private final CompositeDisposable pending;
   private final GameRepository repository;
   private final String pool;
+  private final SharedPreferences preferences;
+  private final String codeLengthPrefKey;
+  private final int codeLengthPrefDefault;
 
   public GameViewModel(@NonNull Application application) {
     super(application);
@@ -29,6 +35,10 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
     pending = new CompositeDisposable();
     repository = new GameRepository(application);
     pool = application.getString(R.string.color_chars);
+    preferences = PreferenceManager.getDefaultSharedPreferences(application);
+    codeLengthPrefKey = application.getString(R.string.code_length_pref_key);
+    codeLengthPrefDefault = application.getResources()
+        .getInteger(R.integer.code_length_pref_default);
     startGame();
   }
 
@@ -49,7 +59,7 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
   public void startGame() {
     throwable.setValue(null);
     Disposable disposable = repository
-        .startGame(pool, 3) //FIXME: Read length from preferences.
+        .startGame(pool, getCodeLengthPreference())
         .subscribe(
             game::postValue,
             this::postThrowable
@@ -75,4 +85,7 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
     this.throwable.postValue(throwable);
   }
 
+  private int getCodeLengthPreference() {
+    return preferences.getInt(codeLengthPrefKey, codeLengthPrefDefault);
+  }
 }
