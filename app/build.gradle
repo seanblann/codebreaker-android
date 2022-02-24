@@ -19,6 +19,7 @@ android {
         String propertyFile = "$projectDir/../../../services/codebreaker.properties"
 
         buildConfigField 'String', 'BASE_URL', quoted(getProperty(propertyFile, 'base_url'))
+        buildConfigField 'String', 'CLIENT_ID', quoted(getProperty(propertyFile, 'client_id'))
 
         javaCompileOptions {
             annotationProcessorOptions {
