@@ -16,6 +16,8 @@
 
   <string name="code_length_pref_title">Code length</string>
   <string name="settings_title">Settings</string>
+  <string name="login_failure_message">Unable to sign in with provided credentials</string>
+  <string name="display_name_format">Signed in as %s</string>
 
   <string-array name="color_labels">
     <item>Red</item>
