@@ -35,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
     setupViewModel();
   }
 
-
-
-
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     super.onCreateOptionsMenu(menu);
@@ -52,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     if (itemId == R.id.settings) {
       Intent intent = new Intent(this, SettingsActivity.class);
       startActivity(intent);
+      handled = true;
+    } else if (itemId == R.id.sign_out)  {
+      viewModel.signOut();
       handled = true;
     } else {
       handled = super.onOptionsItemSelected(item);
@@ -97,3 +97,15 @@ public class MainActivity extends AppCompatActivity {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

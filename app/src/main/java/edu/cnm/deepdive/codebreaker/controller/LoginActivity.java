@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
       Intent intent = new Intent(this, MainActivity.class)
           .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
-    } else {
+    } else if (silent) {
       silent = false;
       binding = ActivityLoginBinding.inflate(getLayoutInflater());
       binding.signIn.setOnClickListener((view) -> viewModel.startSignIn(launcher));

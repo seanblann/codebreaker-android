@@ -71,6 +71,7 @@ public class GoogleSignInService {
                 GoogleSignIn.getSignedInAccountFromIntent(result.getData());
             GoogleSignInAccount account = task.getResult(ApiException.class);
             logAccount(account);
+            emitter.onSuccess(account);
           } catch (ApiException e) {
             emitter.onError(e);
           }
