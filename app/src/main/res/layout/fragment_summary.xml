@@ -34,25 +34,46 @@
 
   <TextView
     android:id="@+id/length_value"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_margin="@dimen/half_dynamic_spacing"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="@id/length"
+    android:layout_width="16dp"
+    android:layout_height="16dp"
+    android:layout_margin="@dimen/half_static_spacing"
     app:layout_constraintBottom_toBottomOf="@id/length"
-    app:layout_constraintStart_toEndOf="@id/length"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_weight="1"
+    app:layout_constraintStart_toEndOf="@id/length"
+    app:layout_constraintTop_toTopOf="@id/length"
     tools:text="4"/>
+
+  <TextView
+    android:id="@+id/count_games_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/section_spacing"
+    android:text="@string/count_games_label"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/length"/>
+
+  <TextView
+    android:id="@+id/count_games"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@id/value_barrier"
+    app:layout_constraintTop_toBottomOf="@id/count_games_label"
+    tools:text="13"/>
 
   <TextView
     android:id="@+id/guesses_label"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/half_dynamic_spacing"
+    android:layout_marginStart="@dimen/half_dynamic_spacing"
+    android:layout_marginBottom="@dimen/half_dynamic_spacing"
     android:text="@string/guesses_label"
     android:textStyle="bold"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/length"
+    app:layout_constraintTop_toTopOf="@id/count_games_label"
     app:layout_constraintBottom_toTopOf="@+id/time_label"/>
 
   <androidx.constraintlayout.widget.Guideline
@@ -138,7 +159,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/guesses_label"
     app:layout_constraintBottom_toBottomOf="parent"/>
-
 
   <TextView
     android:id="@+id/min_time_label"
