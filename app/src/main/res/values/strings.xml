@@ -1,8 +1,8 @@
 <resources>
   <string name="app_name">Codebreaker</string>
   <string name="title_home">Game</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_notifications">Notifications</string>
+  <string name="title_summary">Summary</string>
+  <string name="title_scores">Top Scores</string>
   <string name="submit_text">Submit</string>
   <string name="guess_hint">Text of guess</string>
   <string name="new_game_title">New game</string>
@@ -19,6 +19,7 @@
   <string name="login_failure_message">Unable to sign in with provided credentials</string>
   <string name="display_name_format">Signed in as %s</string>
   <string name="sign_out">Sign out</string>
+  <string name="code_length_label">Code length</string>
 
   <string-array name="color_labels">
     <item>Red</item>

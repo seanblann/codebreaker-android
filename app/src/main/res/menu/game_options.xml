@@ -5,6 +5,7 @@
   <item
     android:id="@+id/new_game"
     android:title="@string/new_game_title"
-    app:showAsAction="never"/>
+    android:icon="@drawable/ic_renew"
+    app:showAsAction="always"/>
 
 </menu>

@@ -9,6 +9,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.codebreaker.model.entity.Game;
 import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
+import edu.cnm.deepdive.model.view.GameSummary;
 import io.reactivex.rxjava3.core.Single;
 import java.util.Collection;
 import java.util.List;
@@ -50,7 +51,8 @@ public interface GameDao {
   @Query("SELECT * FROM game WHERE length = :length ORDER BY created DESC")
   LiveData<List<Game>> select(int length);
 
-
+  @Query("SELECT * FROM game_summary WHERE length = :length")
+  LiveData<GameSummary> getSummary(int length);
 
 
 

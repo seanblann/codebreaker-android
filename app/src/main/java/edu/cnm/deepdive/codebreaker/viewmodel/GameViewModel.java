@@ -9,17 +9,21 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
 import edu.cnm.deepdive.codebreaker.service.GameRepository;
+import edu.cnm.deepdive.model.view.GameSummary;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 
 public class GameViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
 
   private final MutableLiveData<GameWithGuesses> game;
+  private final MutableLiveData<Integer> length;
+  private final LiveData<GameSummary> summary;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
   private final GameRepository repository;
@@ -30,15 +34,17 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
 
   public GameViewModel(@NonNull Application application) {
     super(application);
-    game = new MutableLiveData<>();
-    throwable = new MutableLiveData<>();
-    pending = new CompositeDisposable();
     repository = new GameRepository(application);
-    pool = application.getString(R.string.color_chars);
     preferences = PreferenceManager.getDefaultSharedPreferences(application);
     codeLengthPrefKey = application.getString(R.string.code_length_pref_key);
     codeLengthPrefDefault = application.getResources()
         .getInteger(R.integer.code_length_pref_default);
+    game = new MutableLiveData<>();
+    length = new MutableLiveData<>(getCodeLengthPreference());
+    summary = Transformations.switchMap(length, repository::getSummary);
+    throwable = new MutableLiveData<>();
+    pending = new CompositeDisposable();
+    pool = application.getString(R.string.color_chars);
     startGame();
   }
 
@@ -50,6 +56,18 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
 
   public LiveData<GameWithGuesses> getGame() {
     return game;
+  }
+
+  public LiveData<Integer> getLength() {
+    return length;
+  }
+
+  public void setLength(int length) {
+    this.length.setValue(length);
+  }
+
+  public LiveData<GameSummary> getSummary() {
+    return summary;
   }
 
   public LiveData<Throwable> getThrowable() {
@@ -88,4 +106,6 @@ public class GameViewModel extends AndroidViewModel implements DefaultLifecycleO
   private int getCodeLengthPreference() {
     return preferences.getInt(codeLengthPrefKey, codeLengthPrefDefault);
   }
+
+
 }

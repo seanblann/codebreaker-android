@@ -11,10 +11,12 @@ import edu.cnm.deepdive.codebreaker.model.dao.GuessDao;
 import edu.cnm.deepdive.codebreaker.model.entity.Game;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
 import edu.cnm.deepdive.codebreaker.service.CodebreakerDatabase.Converters;
+import edu.cnm.deepdive.model.view.GameSummary;
 import java.util.Date;
 
 @Database(
     entities = {Game.class, Guess.class},
+    views = {GameSummary.class},
     version = 1,
     exportSchema = true
 )

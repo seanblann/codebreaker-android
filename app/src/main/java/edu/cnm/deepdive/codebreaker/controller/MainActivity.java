@@ -6,10 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
   private void setupNavigation() {
     appBarConfiguration = new AppBarConfiguration.Builder(
-        R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+        R.id.navigation_play, R.id.navigation_summary, R.id.navigation_notifications)
         .build();
     navController = Navigation.findNavController(this,
         R.id.nav_host_fragment_activity_main);
