@@ -22,6 +22,9 @@
   <string name="code_length_label">Code length</string>
   <string name="guesses_label">Guesses</string>
   <string name="time_label">Time</string>
+  <string name="average_label">Average:</string>
+  <string name="maximum_label">Maximum:</string>
+  <string name="minimum_label">Minimum:</string>
 
   <string-array name="color_labels">
     <item>Red</item>

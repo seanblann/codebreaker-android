@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -11,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.codebreaker.databinding.FragmentSummaryBinding;
 import edu.cnm.deepdive.codebreaker.viewmodel.GameViewModel;
 
-public class SummaryFragment extends Fragment {
+public class SummaryFragment extends Fragment implements OnSeekBarChangeListener {
 
   private GameViewModel viewModel;
   private FragmentSummaryBinding binding;
@@ -19,7 +21,7 @@ public class SummaryFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentSummaryBinding.inflate(inflater, container, false);
-    //TODO: Attach event listeners to view objects in binding.
+    binding.length.setOnSeekBarChangeListener(this);
     return binding.getRoot();
   }
 
@@ -44,5 +46,23 @@ public class SummaryFragment extends Fragment {
   public void onDestroyView() {
     super.onDestroyView();
     binding = null;
+  }
+
+  @Override
+  public void onProgressChanged(SeekBar seekBar, int newValue, boolean byUser) {
+    binding.lengthValue.setText(String.valueOf(newValue));
+    if (byUser) {
+      viewModel.setLength(newValue);
+    }
+  }
+
+  @Override
+  public void onStartTrackingTouch(SeekBar seekBar) {
+
+  }
+
+  @Override
+  public void onStopTrackingTouch(SeekBar seekBar) {
+
   }
 }

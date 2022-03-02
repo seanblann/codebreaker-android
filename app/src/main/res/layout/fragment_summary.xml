@@ -31,7 +31,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toStartOf="@id/length_value"
     app:layout_constraintHorizontal_weight="9"/>
-  
+
   <TextView
     android:id="@+id/length_value"
     android:layout_width="0dp"
@@ -55,6 +55,79 @@
     app:layout_constraintTop_toBottomOf="@id/length"
     app:layout_constraintBottom_toTopOf="@+id/time_label"/>
 
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/label_vertical_guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.1"/>
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/value_barrier"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="end"
+    app:barrierMargin="@dimen/half_static_spacing"
+    app:constraint_referenced_ids="min_guesses_label, max_guesses_label,
+      avg_guesses_label, min_time_label,max_time_label, avg_time_label"/>
+
+  <TextView
+    android:id="@+id/min_guesses_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/minimum_label"
+    app:layout_constraintStart_toStartOf="@id/label_vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/guesses_label"
+    app:layout_constraintBottom_toTopOf="@+id/max_guesses_label"/>
+
+  <TextView
+    android:id="@+id/min_guesses"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@+id/value_barrier"
+    app:layout_constraintBaseline_toBaselineOf="@id/min_guesses_label"
+    tools:text="2"/>
+
+  <TextView
+    android:id="@+id/max_guesses_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/maximum_label"
+    app:layout_constraintStart_toStartOf="@id/label_vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/min_guesses_label"
+    app:layout_constraintBottom_toTopOf="@+id/avg_guesses_label"/>
+
+  <TextView
+    android:id="@+id/max_guesses"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@+id/value_barrier"
+    app:layout_constraintBaseline_toBaselineOf="@id/max_guesses_label"
+    tools:text="7"/>
+
+  <TextView
+    android:id="@+id/avg_guesses_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/average_label"
+    app:layout_constraintStart_toStartOf="@id/label_vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/max_guesses_label"
+    app:layout_constraintBottom_toTopOf="@id/time_label"/>
+
+  <TextView
+    android:id="@+id/avg_guesses"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@+id/value_barrier"
+    app:layout_constraintBaseline_toBaselineOf="@id/avg_guesses_label"
+    tools:text="4.53"/>
+
   <TextView
     android:id="@+id/time_label"
     android:layout_width="wrap_content"
@@ -67,6 +140,62 @@
     app:layout_constraintBottom_toBottomOf="parent"/>
 
 
+  <TextView
+    android:id="@+id/min_time_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/minimum_label"
+    app:layout_constraintStart_toStartOf="@id/label_vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/time_label"
+    app:layout_constraintBottom_toTopOf="@+id/max_time_label"/>
+
+  <TextView
+    android:id="@+id/min_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@+id/value_barrier"
+    app:layout_constraintBaseline_toBaselineOf="@id/min_time_label"
+    tools:text="00:40"/>
+
+  <TextView
+    android:id="@+id/max_time_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/maximum_label"
+    app:layout_constraintStart_toStartOf="@id/label_vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/min_time_label"
+    app:layout_constraintBottom_toTopOf="@+id/avg_time_label"/>
+
+  <TextView
+    android:id="@+id/max_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@+id/value_barrier"
+    app:layout_constraintBaseline_toBaselineOf="@id/max_time_label"
+    tools:text="5:00"/>
+
+  <TextView
+    android:id="@+id/avg_time_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:text="@string/average_label"
+    app:layout_constraintStart_toStartOf="@id/label_vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/max_time_label"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <TextView
+    android:id="@+id/avg_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_static_spacing"
+    app:layout_constraintStart_toEndOf="@+id/value_barrier"
+    app:layout_constraintBaseline_toBaselineOf="@id/avg_time_label"
+    tools:text="3.53"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
