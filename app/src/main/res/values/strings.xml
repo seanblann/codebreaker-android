@@ -20,6 +20,8 @@
   <string name="display_name_format">Signed in as %s</string>
   <string name="sign_out">Sign out</string>
   <string name="code_length_label">Code length</string>
+  <string name="guesses_label">Guesses</string>
+  <string name="time_label">Time</string>
 
   <string-array name="color_labels">
     <item>Red</item>
