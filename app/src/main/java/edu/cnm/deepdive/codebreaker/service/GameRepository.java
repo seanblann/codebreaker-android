@@ -7,10 +7,12 @@ import edu.cnm.deepdive.codebreaker.model.dao.GuessDao;
 import edu.cnm.deepdive.codebreaker.model.entity.Game;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
 import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
+import edu.cnm.deepdive.codebreaker.model.view.GamePerformance;
 import edu.cnm.deepdive.model.view.GameSummary;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.util.Iterator;
+import java.util.List;
 
 public class GameRepository {
 
@@ -51,6 +53,10 @@ public class GameRepository {
 
   public LiveData<GameSummary> getSummary(int length) {
     return gameDao.getSummary(length);
+  }
+
+  public LiveData<List<GamePerformance>> getRankingsByDuration(int length) {
+    return gameDao.getRankingsByDuration(length);
   }
 
   private Single<GameWithGuesses> persist(GameWithGuesses game) {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".controller.RankingsFragment">
+
+  <TextView
+    android:id="@+id/length_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/full_dynamic_spacing"
+    android:layout_marginStart="@dimen/full_dynamic_spacing"
+    android:layout_margin="@dimen/half_dynamic_spacing"
+    android:text="@string/code_length_label"
+    android:labelFor="@id/length"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <SeekBar
+    android:id="@+id/length"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/reduced_dynamic_spacing"
+    android:layout_marginBottom="@dimen/reduced_dynamic_spacing"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:min="@integer/code_length_pref_min"
+    android:max="@integer/code_length_pref_max"
+    android:progress="@integer/code_length_pref_default"
+    app:layout_constraintTop_toBottomOf="@id/length_label"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/length_value"
+    app:layout_constraintHorizontal_weight="9"/>
+
+  <TextView
+    android:id="@+id/length_value"
+    android:layout_width="16dp"
+    android:layout_height="16dp"
+    android:layout_margin="@dimen/half_static_spacing"
+    android:layout_marginEnd="@dimen/full_dynamic_spacing"
+    app:layout_constraintBottom_toBottomOf="@id/length"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_weight="1"
+    app:layout_constraintStart_toEndOf="@id/length"
+    app:layout_constraintTop_toTopOf="@id/length"
+    tools:text="4"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rankings"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginTop="@dimen/half_dynamic_spacing"
+    android:orientation="vertical"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/length"
+    app:layout_constraintVertical_bias="0.0"
+    tools:listitem="@layout/item_ranking"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

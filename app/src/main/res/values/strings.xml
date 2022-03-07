@@ -29,6 +29,7 @@
 
   <string name="mmss_format">%1$02d:%2$02d</string>
   <string name="avg_guess_format">%3.1f</string>
+  <string name="date_time_order_format">%1$s %2$s</string>
 
   <string-array name="color_labels">
     <item>Red</item>

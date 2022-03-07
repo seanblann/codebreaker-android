@@ -18,8 +18,8 @@
     tools:layout="@layout/fragment_summary"/>
 
   <fragment
-    android:id="@+id/navigation_notifications"
+    android:id="@+id/navigation_rankings"
     android:label="@string/title_scores"
-    android:name="edu.cnm.deepdive.codebreaker.controller.ui.notifications.NotificationsFragment"
-    tools:layout="@layout/fragment_notifications"/>
+    android:name="edu.cnm.deepdive.codebreaker.controller.RankingsFragment"
+    tools:layout="@layout/fragment_rankings"/>
 </navigation>

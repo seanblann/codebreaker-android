@@ -12,7 +12,7 @@
     android:title="@string/title_summary"/>
 
   <item
-    android:id="@+id/navigation_notifications"
+    android:id="@+id/navigation_rankings"
     android:icon="@drawable/ic_filter_list"
     android:title="@string/title_scores"/>
 
