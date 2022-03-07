@@ -28,9 +28,8 @@ public class RankingAdapter extends RecyclerView.Adapter<Holder> {
     dateFormat = android.text.format.DateFormat.getDateFormat(context);
     timeFormat = android.text.format.DateFormat.getTimeFormat(context);
     dateTimeOrderFormat = context.getString(R.string.date_time_order_format);
-    durationFormat = context.getString(R.string.mmss_format)
+    durationFormat = context.getString(R.string.mmss_format);
   }
-
 
   @NonNull
   @Override
@@ -50,7 +49,6 @@ public class RankingAdapter extends RecyclerView.Adapter<Holder> {
     return rankings.size();
   }
 
-
   class Holder extends RecyclerView.ViewHolder {
 
     private final ItemRankingBinding binding;
@@ -60,8 +58,8 @@ public class RankingAdapter extends RecyclerView.Adapter<Holder> {
       this.binding = binding;
     }
 
-    public void bind(int postition) {
-      GamePerformance item = rankings.get(postition);
+    public void bind(int position) {
+      GamePerformance item = rankings.get(position);
       Date created = item.getCreated();
       binding.created.setText(String.format(dateTimeOrderFormat,
           dateFormat.format(created), timeFormat.format(created)));
