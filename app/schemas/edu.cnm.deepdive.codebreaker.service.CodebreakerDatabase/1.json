@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "10d322de0c622651f1a83662cc26205c",
+    "identityHash": "73fc19102fac74cc065cdcc4dea31cf7",
     "entities": [
       {
         "tableName": "game",
@@ -151,11 +151,15 @@
       {
         "viewName": "game_summary",
         "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT\n    gs.length,\n    COUNT(*) AS count_games,\n    MIN(gs.guess_count) AS min_guesses,\n    MAX(gs.guess_count) AS max_guesses,\n    AVG(gs.guess_count) AS avg_guesses,\n    MIN(gs.last_guess_timestamp - gs.first_guess_timestamp) AS min_time,\n    MAX(gs.last_guess_timestamp - gs.first_guess_timestamp) AS max_time,\n    AVG(gs.last_guess_timestamp - gs.first_guess_timestamp) AS avg_time\nFROM (\n    SELECT\n        ga.length,\n        gu.game_id,\n        COUNT(*) AS guess_count,\n        MIN(gu.created) AS first_guess_timestamp,\n        MAX(gu.created) AS last_guess_timestamp\n    FROM\n        guess AS gu\n        INNER JOIN game AS ga\n            ON gu.game_id = ga.game_id\n    GROUP BY\n        ga.length,\n        gu.game_id\n) AS gs\nGROUP BY\n    gs.length"
+      },
+      {
+        "viewName": "game_performance",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT\n    g.game_id,\n    g.created,\n    g.length,\n    (gs.last_guess_timestamp - gs.first_guess_timestamp) AS duration,\n    gs.guess_count\nFROM\n    game AS g\n    JOIN (\n    SELECT\n        game_id,\n        MIN(created) AS first_guess_timestamp,\n        MAX(created) AS last_guess_timestamp,\n        COUNT(*) AS guess_count\n    FROM\n        guess\n    GROUP BY\n        game_id\n    ) AS gs\n    ON gs.game_id = g.game_id"
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '10d322de0c622651f1a83662cc26205c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '73fc19102fac74cc065cdcc4dea31cf7')"
     ]
   }
 }
